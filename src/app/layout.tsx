@@ -16,7 +16,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <header className='header text-center text-3xl text-fuchsia-400 p-3'>Beer Recipes</header>
+        {children}</body>
     </html>
   )
 }
