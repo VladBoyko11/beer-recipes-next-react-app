@@ -52,7 +52,7 @@ export interface beerRecipe {
     target_og: number
 }
 
-interface IBeerState {
+interface IStore {
     page: number,
     setPage: () => void
     beerRecipes: Array<beerRecipe>,
@@ -65,7 +65,9 @@ interface IBeerState {
     setClickedBeerRecipe: (beerRecipe: beerRecipe) => void
 }
 
-export const useBeerStore = create<IBeerState>()((set) => ({
+
+
+export const useStore = create<IStore>((set) => ({
     page: 1,
     setPage: () => set((state) => ({ page: state.page + 1 })),
     beerRecipes: [],
