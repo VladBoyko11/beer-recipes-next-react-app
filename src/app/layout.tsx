@@ -1,3 +1,4 @@
+import ZustandProvider from '@/components/zustandProvider'
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
@@ -18,7 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <header className='header text-center text-3xl text-fuchsia-400 p-3'>Beer Recipes</header>
-        {children}</body>
+        <ZustandProvider>{children}</ZustandProvider></body>
     </html>
   )
 }

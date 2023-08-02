@@ -54,7 +54,7 @@ export interface beerRecipe {
 
 interface IStore {
     page: number,
-    setPage: () => void
+    setPage: (page: number) => void
     beerRecipes: Array<beerRecipe>,
     setBeerRecipes: (beerRecipes: Array<beerRecipe>) => void,
     selectedBeerRecipes: Array<beerRecipe>,
@@ -69,7 +69,7 @@ interface IStore {
 
 export const useStore = create<IStore>((set) => ({
     page: 1,
-    setPage: () => set((state) => ({ page: state.page + 1 })),
+    setPage: (page: number) => set((state) => ({ page: page })),
     beerRecipes: [],
     selectedBeerRecipes: [],
     clickedBeerRecipe: null,
