@@ -1,6 +1,7 @@
 import React from "react";
 import { beerRecipe } from "@/store/store";
 import { Metadata } from "next";
+import Image from 'next/image'
 
 type Props = {
     params: {
@@ -17,8 +18,10 @@ async function getBeerRecipes(id: string) {
 export async function generateMetadata({
     params: {id}
 }: Props): Promise<Metadata> {
+    const beerRecipeArray: Array<beerRecipe> = await getBeerRecipes(id)
     return {
-        title: id
+        title: beerRecipeArray[0].name,
+        description: `This is the page of ${beerRecipeArray[0].name}`
     }
 }
 
@@ -28,7 +31,7 @@ export default async function BeerRecipePage ({params: {id}}: Props) {
     const beerRecipe = beerRecipeArray[0]
 
     return <div className='flex justify-around items-center bg-white border border-gray-200 shadow dark:border-gray-700 dark:bg-gray-800 py-3 h-auto' >
-    <img className=' object-contain w-auto h-96' src={beerRecipe.image_url} alt="beer recipe" />
+    <Image className=' object-contain w-auto h-96' src={beerRecipe.image_url} alt="beer recipe" width={500} height={500}/>
     <div className=' w-4/5 text-lg'>
         <div className=''><strong>Recipe</strong>: <span className=" text-fuchsia-200">{beerRecipe.name}</span></div>
         <div className='font-italic'><span className=" text-fuchsia-200 italic">{beerRecipe.tagline}</span></div>
